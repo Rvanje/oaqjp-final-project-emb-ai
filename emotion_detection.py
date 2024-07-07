@@ -7,14 +7,20 @@ def emotion_detector(text_to_analyze):
     header = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
     input = {"raw_document": {"text": text_to_analyze}}
 
-    response = requests.post(url) # , json=input)
-    # response = requests.post(url, headers=header, json=input)
+    connecton_check(requests.post(url, headers=header, json=input))
 
-    print(response.status_code)
-    # return response.json().get('emotions', {})
+def connecton_check(response):
+    if response == range(200, 211):
+        return "Connection established.", response.json().get('emotions', {})
+    if response == range(300, 311):
+        return "Connection error."
+    if response == range(400, 411):
+        return "Client error."
+    if response == range(500, 511):
+        return "Server error."
+    else:
+        return "Unknown error."
 
-def connecton_check():
-    pass
 
 if __name__ == "__main__":
     emotion_detector("I am so happy I am doing this")
