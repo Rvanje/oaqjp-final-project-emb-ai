@@ -1,2 +1,4 @@
 import unittest
 
+unittest.addModuleCleanup
+
