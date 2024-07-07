@@ -1,4 +1,4 @@
-
+# Utilization of a emotion detection model installed locally due to connection issues with watson.ai on my local machine
 from transformers import pipeline
 model = pipeline(model="seara/rubert-tiny2-ru-go-emotions")
 
